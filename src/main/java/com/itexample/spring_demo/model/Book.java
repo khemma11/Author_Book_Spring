@@ -18,14 +18,12 @@ public class Book {
     @Id
     @GeneratedValue
     private int id;
-    @Column
     private String title;
-    @Column
     private String description;
-    @Column
     private int price;
-    @Column
-    private int authorId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Author author;
 
 
 }

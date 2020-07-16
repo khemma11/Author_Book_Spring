@@ -7,13 +7,16 @@
 </head>
 <body>
 Welcome!!!<br><br>
+<a href="/logout"th:if="${username!=null}">Logout</a>
+<a href="/login"th:if="${username==null}">Login</a>
+<h3 th:text="Welcome + ' ' + ${username}" th:if="${username!=null}"></h3>
 
-
+<h3 th:text="${msg}" th:if="${msg != null}"></h3>
 
 <div style="width: 100%;height: 80%">
 <div class="AddAuthor">
 Add Author:
-    <form action="/addAuthor" method="post">
+    <form action="/addAuthor" method="post" enctype="multipart/form-data">
         <p>Name:</p>
         <input type="text" name="name" placeholder="Please inpute name">
         <p>Surname:</p>
@@ -26,7 +29,8 @@ Add Author:
             <option value="FEMALE">FEMALE</option>
         </select>
         <p>Biography:</p>
-        <textarea name="bio" placeholder="Please inpute biography"></textarea><br><br>
+        <textarea name="bio" placeholder="Please inpute biography"></textarea>
+        <input type="file" name="image"><br><br>
             <input type="submit" value="Add Author">
     </form></div><br><br>
 
@@ -40,8 +44,8 @@ Add Author:
         <input type="text" name="description" placeholder="Please inpute description">
         <p>Price:</p>
         <input type="text" name="price" placeholder="Please inpute price">
-        <p>AuthorId:</p>
-        <select name="authorId">
+        <p>Author Name:</p>
+        <select name="author.id">
             <option th:each="author:${authors}" th:value="${author.id}" th:text="${author.name}"></option>
         </select><br><br>
         <input type="submit" value="Add Book">

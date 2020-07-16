@@ -17,16 +17,12 @@ import javax.persistence.*;
 public class Author {
     @Id
     @GeneratedValue
-   private int id;
-    @Column
-   private String name;
-    @Column
-   private String surname;
-    @Column
-   private String email;
-    @Column
+    private int id;
+    private String name;
+    private String surname;
+    private String email;
     @Enumerated(value = EnumType.STRING)
-   private Gender gender;
-    @Column
-   private String bio;
+    private Gender gender;
+    private String bio;
+    private String profilePic;
 }
